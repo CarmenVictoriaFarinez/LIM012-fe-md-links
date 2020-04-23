@@ -2,8 +2,8 @@
 
 ## Diagrama de Flujo 📌
 
-![Diagrama](Flujograma_JS_API)
-![Diagrama](Flujograma_CLI)
+![Diagrama](Flujograma_JS_API.jpg)
+![Diagrama](Flujograma_CLI.jpg)
 
 
 ## Preámbulo
