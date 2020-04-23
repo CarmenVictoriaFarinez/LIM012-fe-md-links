@@ -1,0 +1,38 @@
+{
+  "name": "lim012-fe-md-links",
+  "version": "1.0.0",
+  "description": "Markdown Links",
+  "main": "md.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "htmlhint": "htmlhint src/*.html test/*.html",
+    "eslint": "eslint --ext .js src/ test/",
+    "pretest": "npm run eslint && npm run htmlhint",
+    "test": "jest --verbose --coverage",
+    "open-coverage-report": "opener ./coverage/lcov-report/index.html",
+    "start": "serve src/",
+    "deploy": "gh-pages -d src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarmenVictoriaFarinez/LIM012-fe-md-links.git"
+  },
+  "author": "Carmen V Farinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarmenVictoriaFarinez/LIM012-fe-md-links/issues"
+  },
+  "homepage": "https://github.com/CarmenVictoriaFarinez/LIM012-fe-md-links#readme"
+}
