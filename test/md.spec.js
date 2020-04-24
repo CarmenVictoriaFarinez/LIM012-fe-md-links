@@ -1,6 +1,6 @@
-const mdlinks = require('path');
+const path = require('path');
 
-const input = require('./test-API/test-first.md');
+const input = require('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test-first.md');
 
 describe('mdlinks', () => {
   it('is a function', () => {
@@ -8,6 +8,6 @@ describe('mdlinks', () => {
   });
   it('Deberia retornar un boleano, true', () => {
     const output = true;
-    expect(mdlinks(input)).toEqual(output);
+    expect(path(input)).toEqual(output);
   });
 });
