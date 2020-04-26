@@ -1,3 +1,9 @@
-const path = require('path');
+const mdLinks = require('path');
 
-path.isAbsolute('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test-first.md');
+if (mdLinks.isAbsolute('') === true) {
+  console.log('La ruta es absoluta');
+} else {
+  console.log(mdLinks.resolve(''));
+
+  module.exports.path = mdLinks;
+}
