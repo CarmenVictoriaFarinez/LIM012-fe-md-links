@@ -1,9 +1,8 @@
-const mdLinks = require('path');
+const path = require('path');
 
-if (mdLinks.isAbsolute('') === true) {
-  console.log('La ruta es absoluta');
-} else {
-  console.log(mdLinks.resolve(''));
-
-  module.exports.path = mdLinks;
-}
+const absolutePath = (ruta) => {
+  if (path.isAbsolute(ruta) === true) {
+    return ('La ruta es absoluta');
+  } return (path.resolve(ruta));
+};
+module.exports.absolutePath = absolutePath;
