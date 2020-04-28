@@ -1,6 +1,4 @@
-import {
-  absolutePath,
-} from '../src/md';
+const { absolutePath } = require('../src/md.js');
 
 describe('absolutePath', () => {
   it('is a function', () => {
@@ -8,6 +6,10 @@ describe('absolutePath', () => {
   });
   it('Deberia retornar un string con la ruta absoluta', () => {
     const output = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js';
-    expect(absolutePath('./md.js')).toEqual(output);
+    expect(absolutePath('./src/md.js')).toBe(output);
+  });
+  it('Deberia retornar un string con la entrada actual', () => {
+    const output = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js';
+    expect(absolutePath('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js')).toBe(output);
   });
 });

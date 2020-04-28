@@ -7,26 +7,26 @@
   "test": "test"
   },
   "dependencies": {
+    
+  },
+  "devDependencies": {
+    "jest": "^25.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "htmlhint": "^0.11.0"
-  },
-  "devDependencies": {
-    "jest": "^25.4.0"
+    "eslint-plugin-react": "^7.19.0"
+
   },
   "scripts": {
-    "htmlhint": "htmlhint src/*.html test/*.html",
+
     "eslint": "eslint --ext .js src/ test/",
-    "pretest": "npm run eslint && npm run htmlhint",
+    "pretest": "npm run eslint",
     "test": "jest --verbose --coverage",
-    "open-coverage-report": "opener ./coverage/lcov-report/index.html",
-    "start": "serve src/",
-    "deploy": "gh-pages -d src"
+    "open-coverage-report": "opener ./coverage/lcov-report/index.html"
+    
   },
   "repository": {
     "type": "git",
