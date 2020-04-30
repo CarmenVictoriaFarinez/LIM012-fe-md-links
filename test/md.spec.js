@@ -19,7 +19,7 @@ describe('directoryOrfile ', () => {
     expect(typeof directoryOrfile).toBe('function');
   });
   it('Deberia retornar un array con los nombres de los archivos dentro del directorio', () => {
-    const esperado = ['test.js', 'test.md'];
+    const esperado = ['other.md', 'test.md'];
     expect(directoryOrfile('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/')).toEqual(esperado);
   });
 });
