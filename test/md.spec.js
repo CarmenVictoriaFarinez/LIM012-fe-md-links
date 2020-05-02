@@ -1,4 +1,4 @@
-const { absolutePath, directoryOrfile } = require('../src/md.js');
+const { absolutePath, directoryOrfile, getDirectories } = require('../src/md.js');
 
 describe('absolutePath', () => {
   it('is a function', () => {
@@ -21,5 +21,19 @@ describe('directoryOrfile ', () => {
   it('Deberia retornar un array con los nombres de los archivos dentro del directorio', () => {
     const esperado = ['other.md', 'test.md'];
     expect(directoryOrfile('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/')).toEqual(esperado);
+  });
+});
+
+describe('getDirectories', () => {
+  it('is a function', () => {
+    expect(typeof getDirectories).toBe('function');
+  });
+  it('Deberia retornar un array con las rutas de los archivos .md', (done) => {
+    const getDir = (callback) => {
+      const esperado1 = ['test/out.md', 'test/test-API/other.md', 'test/test-API/test.md'];
+      expect(getDirectories(callback)).toContain(esperado1);
+      done();
+    };
+    getDir();
   });
 });

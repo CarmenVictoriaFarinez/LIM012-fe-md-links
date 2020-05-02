@@ -4,10 +4,10 @@
   "description": "Markdown Links",
   "main": "md.js",
   "directories": {
-  "test": "test"
+    "test": "test"
   },
   "dependencies": {
-    
+    "glob": "^7.1.6"
   },
   "devDependencies": {
     "jest": "^25.4.0",
@@ -18,15 +18,12 @@
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0"
-
   },
   "scripts": {
-
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
     "test": "jest --verbose --coverage",
     "open-coverage-report": "opener ./coverage/lcov-report/index.html"
-    
   },
   "repository": {
     "type": "git",
