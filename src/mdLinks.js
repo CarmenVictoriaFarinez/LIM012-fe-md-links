@@ -1,8 +1,20 @@
-// const { absolutePath, getFilesMd } = require('./md.js');
+const fs = require('fs');
+const marked = require('marked');
 
-// const getLinksInFileMd = (route) => {
-// const pathAbsol = absolutePath(route);
-// const mdFiles = getFilesMd(src, callback);
-// };
+const getLinksInFileMd = (str) => {
+  const mdFiles = fs.readFileSync(str).toString();
+  const myRen = new marked.Renderer();
+  const links = [];
 
-// module.exports.getLinksInFileMd = getLinksInFileMd;
+  myRen.link = (href, text, file) => {
+    links.push({
+      href,
+      text,
+      file,
+    });
+  };
+  marked(mdFiles, { renderer: myRen });
+  return links;
+};
+
+module.exports.getLinksInFileMd = getLinksInFileMd;

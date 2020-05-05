@@ -4,7 +4,7 @@ describe('getLinksInFileMd', () => {
   it('is a function', () => {
     expect(typeof getLinksInFileMd).toBe('function');
   });
-  it('Deberia retornar un array de objetos tres propiedades', () => {
+  it('Deberia retornar un array de objetos, cada uno con 3 propiedades', () => {
     const linksOutput = [{
       href: 'https://nodejs.org/es/',
       text: 'Node.js',
@@ -15,6 +15,6 @@ describe('getLinksInFileMd', () => {
       text: 'Path',
       file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
     }];
-    expect(getLinksInFileMd('/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')).toBe(linksOutput);
+    expect(getLinksInFileMd('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')).toEqual(linksOutput);
   });
 });

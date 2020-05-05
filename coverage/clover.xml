@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1588638126364" clover="3.2.0">
-  <project timestamp="1588638126364" name="All files">
-    <metrics statements="18" coveredstatements="15" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="5" elements="29" coveredelements="22" complexity="0" loc="18" ncloc="18" packages="1" files="2" classes="2"/>
+<coverage generated="1588658144169" clover="3.2.0">
+  <project timestamp="1588658144170" name="All files">
+    <metrics statements="29" coveredstatements="26" conditionals="4" coveredconditionals="2" methods="9" coveredmethods="7" elements="42" coveredelements="35" complexity="0" loc="29" ncloc="29" packages="1" files="2" classes="2"/>
     <file name="md.js" path="/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js">
       <metrics statements="18" coveredstatements="15" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="5"/>
       <line num="1" count="1" type="stmt"/>
@@ -24,7 +24,18 @@
       <line num="35" count="1" type="stmt"/>
     </file>
     <file name="mdLinks.js" path="/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/mdLinks.js">
-      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
