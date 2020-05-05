@@ -30,8 +30,6 @@ const getFilesMd = (src) => new Promise((resolve, reject) => {
   });
 });
 
-getFilesMd('test').then((files) => {
-console.log(files);
-});
+(getFilesMd('test').then((files) => (files)));
 
 module.exports = { absolutePath, isDirectory, getFilesMd };

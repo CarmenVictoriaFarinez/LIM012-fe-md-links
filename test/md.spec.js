@@ -28,16 +28,16 @@ describe('isDirectory', () => {
 
 // Test prueba una funcion realizada con una lib para extraer rutas dentro de dir y subdir//
 
-describe('getFilesMd ', () => {
-  it('is a function', () => {
-    expect(typeof getFilesMd).toBe('function');
+describe('Asincrono - Promise(resolve, reject)', () => {
+  test('Promise(resolve, reject)', () => {
+    expect(typeof getFilesMd).toEqual('function');
   });
-  it('Deberia retornar un array con las rutas de los archivos .md', (done) => {
-    const getDir = ('test', (callback) => {
-      const esperado1 = ['test/out.md', 'test/test-API/other.md', 'test/test-API/test.md'];
-      expect(getFilesMd('test', callback)).toBe(esperado1);
-      done();
-      getDir('test', callback);
-    });
+  test('Promise- .resolves', () => {
+    const positiveR = ['test/out.md', 'test/test-API/other.md', 'test/test-API/test.md'];
+    return expect(Promise.resolve(positiveR)).resolves.toEqual(positiveR);
+  });
+  test('Promise- .reject', () => {
+    const negativeR = ['Error'];
+    return expect(Promise.reject(negativeR)).rejects.toEqual(negativeR);
   });
 });
