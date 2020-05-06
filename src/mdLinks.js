@@ -1,12 +1,12 @@
 const fs = require('fs');
 const marked = require('marked');
 
-const getLinksInFileMd = (str) => {
-  const mdFiles = fs.readFileSync(str).toString();
+const getLinksInFileMd = (file) => {
+  const mdFiles = fs.readFileSync(file).toString();
   const myRen = new marked.Renderer();
   const links = [];
 
-  myRen.link = (href, text, file) => {
+  myRen.link = (href, title, text) => {
     links.push({
       href,
       text,
