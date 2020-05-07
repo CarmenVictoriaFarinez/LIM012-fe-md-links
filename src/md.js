@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
+const marked = require('marked');
 
 // Funcion determina ruta absoluta o relativa --> output: string
 
@@ -32,4 +33,25 @@ const getFilesMd = (src) => new Promise((resolve, reject) => {
 
 (getFilesMd('test').then((files) => (files)));
 
-module.exports = { absolutePath, isDirectory, getFilesMd };
+// Funcion usa la lib marked para transformar el file en html, y con el con el renderizador
+// personalizado (New Renderer) busca las propiedades especificas (href, text,file)
+
+const getLinksInFileMd = (file) => {
+  const mdFiles = fs.readFileSync(file).toString();
+  const myRen = new marked.Renderer();
+  const links = [];
+
+  myRen.link = (href, title, text) => {
+    links.push({
+      href,
+      text,
+      file,
+    });
+  };
+  marked(mdFiles, { renderer: myRen });
+  return links;
+};
+
+module.exports = {
+  absolutePath, isDirectory, getFilesMd, getLinksInFileMd,
+};
