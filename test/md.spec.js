@@ -1,5 +1,5 @@
 const {
-  absolutePath, isDirectory, getFilesMd, getLinksInFileMd,
+  absolutePath, getFilesMd, getLinksInFileMd,
 } = require('../src/md.js');
 
 describe('absolutePath', () => {
@@ -13,18 +13,6 @@ describe('absolutePath', () => {
   it('Deberia retornar un string con la entrada actual', () => {
     const output = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js';
     expect(absolutePath('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js')).toBe(output);
-  });
-});
-
-// Test solo prueba una funcion que ubica files .md dentro de un directorio, no dentro de subdir//
-
-describe('isDirectory', () => {
-  it('is a function', () => {
-    expect(typeof isDirectory).toBe('function');
-  });
-  it('Deberia retornar un array con los nombres de los archivos dentro del directorio', () => {
-    const esperado = ['other.md', 'test.md'];
-    expect(isDirectory('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/')).toEqual(esperado);
   });
 });
 
