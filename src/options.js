@@ -30,8 +30,7 @@ const validate = (route) => {
   // Se invoca la funcion pasada a la promise.all(con argumento iterable) //
   return Promise.all(validateLinks);
 };
-// validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
-// LIM012-fe-md-links/test/test-API/test.md')
+// validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp')
 // .then((res) => console.log(res));
 
 // Funcion para obtener links unicos y links totales//
@@ -62,7 +61,8 @@ const getBrokenLinksStats = (path) => new Promise((resolve) => {
     });
 });
 
-getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')
-  .then((res) => (res));
+// getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
+// LIM012-fe-md-links/test/test-API/test.md')
+//  .then((res) => (res));
 
 module.exports = { validate, getLinksStats, getBrokenLinksStats };

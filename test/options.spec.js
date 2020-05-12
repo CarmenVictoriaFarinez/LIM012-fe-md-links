@@ -29,7 +29,7 @@ const validateOutput = [
 
 const path = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md';
 
-describe('validate', () => {
+/* describe('validate', () => {
   test('Debería de ser una función', () => {
     expect(typeof validate).toBe('function');
   });
@@ -48,6 +48,30 @@ describe('validate', () => {
       })
       .catch(() => done());
   }));
+}); */
+const error = {
+  errno: -21,
+  syscall: 'read',
+  code: 'EISDIR',
+};
+
+describe('Asincrono - Promise(resolve, reject)', () => {
+  test('Promise - Promise(resolve, reject)', (done) => {
+    fetchMock
+      .mock('https://nodejs.org/es/', 200)
+      .mock('https://nodejs.org/pe', 404)
+      .mock('https://nodejs.org/api/path.html', 200)
+      .mock('*', 200);
+    validate(path).then((arrayObj) => {
+      expect(arrayObj).toEqual(validateOutput);
+      done();
+    });
+  });
+  test('Promise - .resolves', () => expect(validate(path)).resolves.toEqual(validateOutput));
+  test('Promise - .rejects', () => {
+    const pathBad = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp';
+    return expect(validate(pathBad)).rejects.toEqual(error);
+  });
 });
 
 describe('getLinksStats', () => {
