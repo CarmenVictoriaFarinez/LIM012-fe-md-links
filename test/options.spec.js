@@ -29,7 +29,7 @@ const validateOutput = [
 
 const path = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md';
 
-/* describe('validate', () => {
+describe('validate', () => {
   test('Debería de ser una función', () => {
     expect(typeof validate).toBe('function');
   });
@@ -48,8 +48,8 @@ const path = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md
       })
       .catch(() => done());
   }));
-}); */
-const error = {
+});
+/* const error = {
   errno: -21,
   syscall: 'read',
   code: 'EISDIR',
@@ -72,7 +72,7 @@ describe('Asincrono - Promise(resolve, reject)', () => {
     const pathBad = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp';
     return expect(validate(pathBad)).rejects.toEqual(error);
   });
-});
+}); */
 
 describe('getLinksStats', () => {
   test('Debería de ser una función', () => {
