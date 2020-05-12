@@ -45,6 +45,11 @@ describe('getLinksInFileMd', () => {
       file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
     },
     {
+      href: 'https://nodejs.org/pe',
+      text: 'NODE',
+      file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
+    },
+    {
       href: 'https://nodejs.org/api/path.html',
       text: 'Path',
       file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',

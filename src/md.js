@@ -22,12 +22,11 @@ const getFilesMd = (src) => new Promise((resolve, reject) => {
     resolve(files);
   });
 });
-
 (getFilesMd('test').then((files) => (files)));
 
 // Funcion usa la lib marked para transformar el file en html, y con el renderizador
 // personalizado (New Renderer) busca las propiedades especificas (href, text,file)
-// input: path, string  / output: array objetos.
+// input: path del file, string  / output: array objetos.
 
 const getLinksInFileMd = (file) => {
   const mdFiles = fs.readFileSync(file).toString();
@@ -42,8 +41,9 @@ const getLinksInFileMd = (file) => {
     });
   };
   marked(mdFiles, { renderer: myRen });
-  return links;
+  return (links);
 };
+
 
 module.exports = {
   absolutePath, getFilesMd, getLinksInFileMd,

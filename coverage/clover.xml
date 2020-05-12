@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1588808548099" clover="3.2.0">
-  <project timestamp="1588808548099" name="All files">
-    <metrics statements="27" coveredstatements="24" conditionals="4" coveredconditionals="2" methods="9" coveredmethods="7" elements="40" coveredelements="33" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
+<coverage generated="1589252828422" clover="3.2.0">
+  <project timestamp="1589252828422" name="All files">
+    <metrics statements="51" coveredstatements="46" conditionals="8" coveredconditionals="6" methods="21" coveredmethods="17" elements="80" coveredelements="69" complexity="0" loc="51" ncloc="51" packages="1" files="2" classes="2"/>
     <file name="md.js" path="/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/md.js">
-      <metrics statements="27" coveredstatements="24" conditionals="4" coveredconditionals="2" methods="9" coveredmethods="7"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
+      <metrics statements="23" coveredstatements="20" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="5"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
       <line num="9" count="2" type="cond" truecount="2" falsecount="0"/>
       <line num="10" count="1" type="stmt"/>
       <line num="11" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="18" count="3" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
-      <line num="25" count="1" type="stmt"/>
-      <line num="26" count="1" type="stmt"/>
-      <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="22" count="0" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="31" count="2" type="stmt"/>
+      <line num="32" count="5" type="stmt"/>
+      <line num="33" count="5" type="stmt"/>
+      <line num="34" count="5" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="37" count="15" type="stmt"/>
+      <line num="43" count="5" type="stmt"/>
+      <line num="44" count="5" type="stmt"/>
+      <line num="48" count="2" type="stmt"/>
+    </file>
+    <file name="options.js" path="/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/src/options.js">
+      <metrics statements="28" coveredstatements="26" conditionals="4" coveredconditionals="4" methods="14" coveredmethods="12"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="4" type="stmt"/>
+      <line num="9" count="12" type="stmt"/>
+      <line num="10" count="12" type="stmt"/>
+      <line num="12" count="9" type="stmt"/>
+      <line num="17" count="9" type="cond" truecount="4" falsecount="0"/>
+      <line num="18" count="6" type="stmt"/>
+      <line num="19" count="6" type="stmt"/>
+      <line num="20" count="6" type="stmt"/>
+      <line num="22" count="3" type="stmt"/>
+      <line num="23" count="3" type="stmt"/>
+      <line num="24" count="3" type="stmt"/>
       <line num="28" count="0" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="34" count="1" type="stmt"/>
-      <line num="39" count="1" type="stmt"/>
+      <line num="31" count="4" type="stmt"/>
       <line num="40" count="1" type="stmt"/>
       <line num="41" count="1" type="stmt"/>
-      <line num="42" count="1" type="stmt"/>
-      <line num="44" count="1" type="stmt"/>
-      <line num="45" count="2" type="stmt"/>
-      <line num="51" count="1" type="stmt"/>
-      <line num="52" count="1" type="stmt"/>
-      <line num="55" count="1" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="46" count="3" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="57" count="2" type="stmt"/>
+      <line num="58" count="2" type="stmt"/>
+      <line num="60" count="3" type="stmt"/>
+      <line num="61" count="1" type="stmt"/>
+      <line num="65" count="1" type="stmt"/>
+      <line num="66" count="0" type="stmt"/>
+      <line num="68" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -1,32 +1,83 @@
 const fetchMock = require('../__mocks__/node-fetch');
-const { validate } = require('../src/options.js');
+const {
+  validate, getLinksStats, getBrokenLinksStats,
+} = require('../src/options.js');
+
+const validateOutput = [
+  {
+    href: 'https://nodejs.org/es/',
+    text: 'Node.js',
+    file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
+    status: 200,
+    message: 'OK',
+  },
+  {
+    href: 'https://nodejs.org/pe',
+    text: 'NODE',
+    file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
+    status: 404,
+    message: 'Fail',
+  },
+  {
+    href: 'https://nodejs.org/api/path.html',
+    text: 'Path',
+    file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
+    status: 200,
+    message: 'OK',
+  },
+];
+
+const path = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md';
 
 describe('validate', () => {
-  it('is a function', () => {
+  test('Debería de ser una función', () => {
     expect(typeof validate).toBe('function');
   });
-  it('Deberia retornar un array de objetos, cada uno con 5 propiedades', (done) => {
+
+  test('Deberia retornar un objeto con 5 propiedades', (done) => new Promise((resolve) => {
     fetchMock
-      .mock()
-      .mock();
-    const testLink = validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md');
-    testLink.then((response) => {
-      const validateOutput = [{
-        href: 'https://nodejs.org/es/',
-        text: 'Node.js',
-        file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
-        status: 200,
-        ok: 'ok',
-      },
-      {
-        href: 'https://nodejs.org/api/path.html',
-        text: 'Path',
-        file: '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
-        status: 200,
-        ok: 'ok',
-      }];
-      expect(validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')).toEqual(validateOutput);
-      done();
-    });
+      .mock('https://nodejs.org/es/', 200)
+      .mock('https://nodejs.org/pe', 404)
+      .mock('https://nodejs.org/api/path.html', 200)
+      .mock('*', 200);
+    validate(path)
+      .then((response) => {
+        expect(response).toEqual(validateOutput);
+        resolve(response);
+        done();
+      })
+      .catch(() => done());
+  }));
+});
+
+describe('getLinksStats', () => {
+  test('Debería de ser una función', () => {
+    expect(typeof getLinksStats).toBe('function');
   });
+  test('Debería retornar el total de links encontrados y la cantidad de links únicos', (done) => new Promise((resolve) => {
+    getLinksStats(path)
+      .then((response) => {
+        expect(response).toEqual('Total: 3 Unique: 3');
+        resolve(response);
+        done();
+      })
+      .catch(() => done());
+  }));
+});
+
+describe('getBrokenLinksStats', () => {
+  test('Debería ser una función', () => {
+    expect(typeof getBrokenLinksStats).toBe('function');
+  });
+  test('Debería retornar el total de links rotos', (done) => new Promise((resolve) => {
+    getBrokenLinksStats(path)
+      .then((response) => {
+        expect(response).toEqual('Broken: 1');
+        resolve(response);
+        done();
+      })
+      .catch(() => {
+        done();
+      });
+  }));
 });

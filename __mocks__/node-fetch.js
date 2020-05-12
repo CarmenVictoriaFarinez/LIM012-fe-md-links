@@ -5,8 +5,4 @@ Object.assign(fetchMock.config, {
   fetch: nodeFetch,
 });
 
-fetchMock.mock('*', 200);
-
-fetchMock.mock('enlacefalla', 400);
-
 module.exports = fetchMock;
