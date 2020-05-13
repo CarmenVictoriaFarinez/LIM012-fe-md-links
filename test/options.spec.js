@@ -1,7 +1,7 @@
 const fetchMock = require('../__mocks__/node-fetch');
 const {
   validate, getLinksStats, getBrokenLinksStats,
-} = require('../src/options.js');
+} = require('../src/options');
 
 const validateOutput = [
   {
