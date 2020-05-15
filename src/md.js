@@ -11,6 +11,8 @@ const absolutePath = (route) => {
   } return (path.resolve(route));
 };
 
+// absolutePath('./test-API/test.md');
+
 // Funcion usa la lib glob para extraer todas las rutas de los files .md dentro de dir y subdir
 // input: path, string  / output: array de strings
 
@@ -23,6 +25,16 @@ const getFilesMd = (src) => new Promise((resolve, reject) => {
   });
 });
 (getFilesMd('test').then((files) => (files)));
+
+// Funcion valida que sea directorio y filtra los archivos .md -->> output: array de strings
+
+const isDirectory = (str) => {
+  const dir = fs.readdirSync(str); // output -->> array con strings
+  const listFiles = dir.filter((item) => path.extname(item) === '.md');
+  return (listFiles);
+};
+// isDirectory('/home/ubuntu/Documentos/Laboratoria/
+// ProyectosBootcamp/LIM012-fe-md-links/test/test-API/');
 
 // Funcion usa la lib marked para transformar el file en html, y con el renderizador
 // personalizado (New Renderer) busca las propiedades especificas (href, text,file)
@@ -43,8 +55,9 @@ const getLinksInFileMd = (file) => {
   marked(mdFiles, { renderer: myRen });
   return (links);
 };
-
+// console.log(getLinksInFileMd('/home/ubuntu/Documentos/
+// Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md'));
 
 module.exports = {
-  absolutePath, getFilesMd, getLinksInFileMd,
+  absolutePath, isDirectory, getFilesMd, getLinksInFileMd,
 };

@@ -70,7 +70,8 @@ describe('Asincrono - Promise(resolve, reject)', () => {
   test('Promise - .resolves', () => expect(validate(path)).resolves.toEqual(validateOutput));
   test('Promise - .rejects', () => {
     const pathBad = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp';
-    return expect(validate(pathBad)).rejects.toEqual(error);
+    return expect(validate(pathBad)).rejects.toEqual('EISDIR');
+  // .catch((err) => expect(err.code).toEqual('EISDIR'));
   });
 }); */
 

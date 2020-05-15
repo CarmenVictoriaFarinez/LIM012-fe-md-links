@@ -5,9 +5,9 @@ const { getLinksInFileMd } = require('./md.js');
 // input: path output: array de objetos con 5 propiedades //
 
 const validate = (route) => {
-  const linksMd = getLinksInFileMd(route); // objeto con propie de resp de la peticion con fetch //
+  const linksMd = getLinksInFileMd(route);
   const validateLinks = linksMd.map((element) => new Promise((resolve, reject) => (
-    fetch(element.href)
+    fetch(element.href) // objeto con propie de resp de la peticion con fetch //
       .then((res) => {
         const obj = {
           href: element.href,
@@ -30,7 +30,8 @@ const validate = (route) => {
   // Se invoca la funcion pasada a la promise.all(con argumento iterable) //
   return Promise.all(validateLinks);
 };
-// validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp')
+// validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
+// LIM012-fe-md-links/test/test-API/test.md')
 // .then((res) => console.log(res));
 
 // Funcion para obtener links unicos y links totales//
@@ -47,8 +48,8 @@ const getLinksStats = (path) => new Promise((resolve) => {
     });
 });
 
-// getLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp
-// /LIM012-fe-md-links/test/test-API/test.md')
+// getLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
+// LIM012-fe-md-links/test/test-API/test.md')
 // .then((res) => (res));
 
 // Función para ver los links rotos
@@ -61,8 +62,7 @@ const getBrokenLinksStats = (path) => new Promise((resolve) => {
     });
 });
 
-// getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
-// LIM012-fe-md-links/test/test-API/test.md')
-//  .then((res) => (res));
+getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')
+  .then((res) => (res));
 
 module.exports = { validate, getLinksStats, getBrokenLinksStats };
