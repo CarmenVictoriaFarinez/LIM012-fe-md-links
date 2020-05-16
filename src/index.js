@@ -1,17 +1,19 @@
-const { absolutePath, getLinksInFileMd } = require('./md');
+const { routeTrue, absolutePath, getLinksInFileMd } = require('./md');
 const { validate } = require('./options');
 
 const mdLinks = (path, options) => new Promise((resolve) => {
-  const abc = absolutePath(path);
-  if (absolutePath(path) === true && options) {
+  const absolute = absolutePath(path);
+  const verifpath = routeTrue(absolute);
+  if (verifpath === true && options) {
     if (options.validate === true) {
-      validate(abc).then((res) => resolve(res));
-    } else if (absolutePath(path) === true && !options) {
-      resolve(getLinksInFileMd(abc));
+      validate(absolute).then((res) => resolve(res));
+    } else if (options.validate === false) {
+      resolve(getLinksInFileMd(absolute));
     }
   }
 });
-mdLinks('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md', { validate: true }).then((res) => {
-  console.log(res);
-});
+
+// mdLinks('./test/out.md', { validate: true })
+//  .then((res) => console.log(res));
+
 module.exports = mdLinks;

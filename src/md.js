@@ -4,6 +4,7 @@ const glob = require('glob');
 const marked = require('marked');
 
 // Funcion determina ruta absoluta o relativa --> input: path, string /output: path, string
+const routeTrue = (route) => fs.existsSync(route);
 
 const absolutePath = (route) => {
   if (path.isAbsolute(route) === true) {
@@ -59,5 +60,5 @@ const getLinksInFileMd = (file) => {
 // Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md'));
 
 module.exports = {
-  absolutePath, isDirectory, getFilesMd, getLinksInFileMd,
+  routeTrue, absolutePath, isDirectory, getFilesMd, getLinksInFileMd,
 };
