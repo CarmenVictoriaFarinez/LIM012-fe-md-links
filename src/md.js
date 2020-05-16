@@ -25,7 +25,7 @@ const getFilesMd = (src) => new Promise((resolve, reject) => {
     resolve(files);
   });
 });
-(getFilesMd('test').then((files) => (files)));
+(getFilesMd('./test/test-API/out.md').then((files) => (files)));
 
 // Funcion valida que sea directorio y filtra los archivos .md -->> output: array de strings
 
