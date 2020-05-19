@@ -18,7 +18,7 @@ if (argv.length) {
         const uniqueLinks = [...new Set(arrobj.map((obj) => obj.href))].length;
         console.log(`\n Total : ${totalLinks} \n Unique: ${uniqueLinks}`);
       });
-  } else if ((argv[1] === '--validate' && argv[2] === '--stats') || (argv[1] === '--stats' && argv[2] === '--validate')) {
+  } else if ((argv[1] === '--validate' && argv[2] === '--stats')) {
     mdLinks(argv[0], { validate: true })
       .then((arrobj) => {
         const totalLinks = arrobj.length;
@@ -33,11 +33,13 @@ if (argv.length) {
       .then((response) => response.map((links) => {
         console.log(`\n Path :${links.file} \n Link : ${links.href}  ${links.status}  ${links.message} \n File : ${links.text} `);
       }));
-  } mdLinks(argv[0])
-    .then((response) => response.forEach((links) => {
-      console.log(`\n Path :${links.file}\n Link : ${links.href}  \n Title : ${links.text}`);
-    }));
+  } else {
+    mdLinks(argv[0])
+      .then((response) => response.forEach((links) => {
+        console.log(`\n Path :${links.file}\n Link : ${links.href}  \n Title : ${links.text}`);
+      }));
+  }
 }
 
-// mdLinks('./test/test-API/test.md', { stats: true }).then((res) => console.log(res));
+// mdLinks('./test/test-API/test.md', { validate: true }).then((res) => console.log(res));
 // getBrokenLinksStats('./test/test-API/test.md').then((res) => console.log(res));
