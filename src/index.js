@@ -7,12 +7,12 @@ const mdLinks = (path, options) => new Promise((resolve) => {
   if (verifpath === true && options) {
     if (options.validate === true) {
       validate(absolute).then((res) => resolve(res));
-    } else if (options.validate === false) {
-      resolve(getLinksInFileMd(absolute));
     }
+  } else {
+    resolve(getLinksInFileMd(absolute));
   }
 });
 
-// mdLinks('./test/out.md', { validate: true }).then((res) => console.log(res));
+// mdLinks('./test/out.md').then((res) => console.log(res));
 
 module.exports = mdLinks;

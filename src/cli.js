@@ -1,46 +1,43 @@
 #!/usr/bin/env node
 const process = require('process');
 const mdLinks = require('./index');
-const { getLinksStats, getBrokenLinksStats } = require('./options');
 
 // extrayendo de la cadena los 2 argumentos primeros de la linea de comandos: node, nombrearchivo//
 const argv = process.argv.slice(2);
-const path = argv[0];
-const optionValidate = argv[1];
-const optionStats = argv[2];
 const options = {
   validate: false,
   stats: false,
 };
 
 if (argv.length) {
-  mdLinks(path, options)
-    .then((response) => response.forEach((links) => {
-      console.log(`\n Path :${links.file}\n Link : ${links.href}  \n Texto : ${links.text}`);
-    }));
-  if (optionValidate === '--validate') {
+  // md-links --stats -->> total, unique
+  if (argv[1] === '--stats') {
+    mdLinks(argv[0])
+      .then((arrobj) => {
+        const totalLinks = arrobj.length;
+        const uniqueLinks = [...new Set(arrobj.map((obj) => obj.href))].length;
+        console.log(`\n Total : ${totalLinks} \n Unique: ${uniqueLinks}`);
+      });
+  } else if ((argv[1] === '--validate' && argv[2] === '--stats') || (argv[1] === '--stats' && argv[2] === '--validate')) {
+    mdLinks(argv[0], { validate: true })
+      .then((arrobj) => {
+        const totalLinks = arrobj.length;
+        const uniqueLinks = [...new Set(arrobj.map((obj) => obj.href))].length;
+        const broken = arrobj.filter((element) => element.message === 'Fail').length;
+        console.log(`\n Total : ${totalLinks}\n Unique: ${uniqueLinks}\n Broken: ${broken}`);
+      });
+  } else if (argv[1] === '--validate') {
     options.validate = true;
-    mdLinks(path, options)
-      // eslint-disable-next-line array-callback-return
+    mdLinks(argv[0], options)
+    // eslint-disable-next-line array-callback-return
       .then((response) => response.map((links) => {
-        console.log(`\n Path :${links.file} \n Link : ${links.href}  ${links.status}  ${links.message} 
-      \n texto : ${links.text} `);
+        console.log(`\n Path :${links.file} \n Link : ${links.href}  ${links.status}  ${links.message} \n File : ${links.text} `);
       }));
-  } else if (optionStats === '--stats') {
-    options.stats = true;
-    getLinksStats(path)
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-  }
-  if (optionValidate === '--validate' && optionStats === '--stats') {
-    options.validate = true;
-    options.stats = true;
-    Promise.all([getLinksStats(path), getBrokenLinksStats(path)])
-      .then((response) => response.forEach((properties) => console.log(properties)))
-      .catch((error) => console.log(error));
-  }
+  } mdLinks(argv[0])
+    .then((response) => response.forEach((links) => {
+      console.log(`\n Path :${links.file}\n Link : ${links.href}  \n Title : ${links.text}`);
+    }));
 }
 
-mdLinks('./test/test-API/test.md', { stats: true }).then((res) => console.log(res));
-// getLinksStats('./test/test-API/test.md').then((res) => console.log(res));
+// mdLinks('./test/test-API/test.md', { stats: true }).then((res) => console.log(res));
 // getBrokenLinksStats('./test/test-API/test.md').then((res) => console.log(res));

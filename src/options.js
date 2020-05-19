@@ -47,10 +47,9 @@ const getLinksStats = (path) => new Promise((resolve) => {
       resolve(`Total : ${totalLinks} Unique: ${uniqueLinks}`);
     });
 });
-
-// getLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
-// LIM012-fe-md-links/test/test-API/test.md')
-// .then((res) => (res));
+// getLinksStats('/home/ubuntu/Documentos/Laboratoria/
+// ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')
+//  .then((res) => console.log (res));
 
 // Función para ver los links rotos
 // input: path-string output: string-cantidades
@@ -61,6 +60,7 @@ const getBrokenLinksStats = (path) => new Promise((resolve) => {
       resolve(`Broken: ${brokenLinks}`);
     });
 });
+
 
 getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')
   .then((res) => (res));
