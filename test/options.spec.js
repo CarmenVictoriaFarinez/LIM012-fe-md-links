@@ -29,51 +29,21 @@ const validateOutput = [
 
 const path = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md';
 
-describe('validate', () => {
-  test('Debería de ser una función', () => {
-    expect(typeof validate).toBe('function');
-  });
+fetchMock
+  .mock('https://nodejs.org/es/', 200)
+  .mock('https://nodejs.org/pe', 404)
+  .mock('https://nodejs.org/api/path.html', 200)
+  .mock('*', 200);
 
-  test('Deberia retornar un objeto con 5 propiedades', (done) => new Promise((resolve) => {
-    fetchMock
-      .mock('https://nodejs.org/es/', 200)
-      .mock('https://nodejs.org/pe', 404)
-      .mock('https://nodejs.org/api/path.html', 200)
-      .mock('*', 200);
-    validate(path)
-      .then((response) => {
-        expect(response).toEqual(validateOutput);
-        resolve(response);
-        done();
-      })
-      .catch(() => done());
-  }));
-});
-/* const error = {
-  errno: -21,
-  syscall: 'read',
-  code: 'EISDIR',
-};
-
-describe('Asincrono - Promise(resolve, reject)', () => {
-  test('Promise - Promise(resolve, reject)', (done) => {
-    fetchMock
-      .mock('https://nodejs.org/es/', 200)
-      .mock('https://nodejs.org/pe', 404)
-      .mock('https://nodejs.org/api/path.html', 200)
-      .mock('*', 200);
+describe('Asincrono - Promise(resolve)', () => {
+  test('Promise - Promise(resolve)', (done) => {
     validate(path).then((arrayObj) => {
       expect(arrayObj).toEqual(validateOutput);
       done();
     });
   });
   test('Promise - .resolves', () => expect(validate(path)).resolves.toEqual(validateOutput));
-  test('Promise - .rejects', () => {
-    const pathBad = '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp';
-    return expect(validate(pathBad)).rejects.toEqual('EISDIR');
-  // .catch((err) => expect(err.code).toEqual('EISDIR'));
-  });
-}); */
+});
 
 describe('getLinksStats', () => {
   test('Debería de ser una función', () => {

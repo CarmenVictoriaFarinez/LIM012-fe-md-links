@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 const { getLinksInFileMd } = require('./md.js');
 
-// Funcion para extraer las 5 propiedades //
+// Funcion para extraer links con las 5 propiedades //
 // input: path output: array de objetos con 5 propiedades //
 
 const validate = (route) => {
   const linksMd = getLinksInFileMd(route);
-  const validateLinks = linksMd.map((element) => new Promise((resolve, reject) => (
+  const validateLinks = linksMd.map((element) => new Promise((resolve) => (
     fetch(element.href) // objeto con propie de resp de la peticion con fetch //
       .then((res) => {
         const obj = {
@@ -24,15 +24,12 @@ const validate = (route) => {
           resolve(obj);
         }
       })
-      .catch((err) => {
-        reject(err);
-      }))));
+  )));
   // Se invoca la funcion pasada a la promise.all(con argumento iterable) //
   return Promise.all(validateLinks);
 };
-// validate('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/
-// LIM012-fe-md-links/test/test-API/test.md')
-// .then((res) => console.log(res));
+// validate('/home/ubuntu/Documentos/
+// Laboratoria/ProyectosBootcamp').then((res) => console.log(res));
 
 // Funcion para obtener links unicos y links totales//
 // input: path-string output: string-cantidades
@@ -62,7 +59,8 @@ const getBrokenLinksStats = (path) => new Promise((resolve) => {
 });
 
 
-getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md')
-  .then((res) => (res));
+// getBrokenLinksStats('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp
+// /LIM012-fe-md-links/test/test-API/test.md')
+//  .then((res) => (res));
 
 module.exports = { validate, getLinksStats, getBrokenLinksStats };
