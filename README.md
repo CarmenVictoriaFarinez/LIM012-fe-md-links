@@ -1,18 +1,14 @@
 # Library Markdown Links 🚀
 
-- El objetivo práctico de este proyecto fue crear una **librería** (o biblioteca - _library_) implementada en JavaScript, y ejecutada usando Node.js, que lea y analice archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.
+El objetivo práctico de este proyecto fue crear una librería (o biblioteca - library) implementada en JavaScript, y ejecutada usando Node.js, que lea y analice archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.
 
-- Este proyecto se resolvio de manera individual.
+[Markdown](mark.jpg)
 
--  Este proyecto se ejecuto utilizando las siguientes **librerías externas**:
+Este proyecto se resolvio de manera individual.
 
-**  "fetch-mock": "^9.5.0",
-    "fetch-mock-jest": "^1.3.0",
-    "glob": "^7.1.6",
-    "marked": "^1.0.0",
-    "node-fetch": "^2.6.0" **
+Se realizo utilizando las siguientes librerías externas, como:
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown)
+** "fetch-mock", "fetch-mock-jest", "glob", "marked", "node-fetch" **
 
 ## Diagrama de Flujo 📌
 
@@ -61,6 +57,7 @@ Probado en Windows
 Probado en Linux 
 
 ![Ubuntu1](test1.png)
+
 ![Ubuntu](ubuntu.png)
 
 ### CLI (Command Line Interface - Interfaz de Línea de Comando)
@@ -122,6 +119,7 @@ parsing,
 [markdown](https://daringfireball.net/projects/markdown/syntax), CLI,
 [npm-scripts](https://docs.npmjs.com/misc/scripts),
 [semver](https://semver.org/), ...
+
 
 
 ## Objetivos de aprendizaje
