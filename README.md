@@ -8,7 +8,7 @@ Este proyecto se resolvio de manera individual.
 
 Se realizo utilizando las siguientes librerías externas, como:
 
-** "fetch-mock", "fetch-mock-jest", "glob", "marked", "node-fetch" **
+#### `"fetch-mock", "fetch-mock-jest", "glob", "marked", "node-fetch" ` 
 
 ## Diagrama de Flujo 📌
 
