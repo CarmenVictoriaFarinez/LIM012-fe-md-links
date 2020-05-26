@@ -24,6 +24,8 @@ El módulo puede importarse en otros scripts de Node.js y ofrece la siguiente in
 
 #### `mdLinks(path, options)`
 
+```js
+
 mdLinks("./some/example.md")
   .then(links => {
     // => [{ href, text, file }]
@@ -35,6 +37,8 @@ mdLinks("./some/example.md", { validate: true })
     // => [{ href, text, file, status, ok }]
   })
   .catch(console.error);
+
+  ```
 
 Probado en Windows
 
