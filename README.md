@@ -2,7 +2,7 @@
 
 El objetivo práctico de este proyecto fue crear una librería (o biblioteca - library) implementada en JavaScript, y ejecutada usando Node.js, que lea y analice archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.
 
-[Markdown](mark.jpg)
+![Markdown](mark.jpg)
 
 Este proyecto se resolvio de manera individual.
 
