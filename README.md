@@ -6,8 +6,7 @@ El objetivo práctico de este proyecto fue crear una librería (o biblioteca - l
 
 Este proyecto se resolvio de manera individual.
 
-Se realizo utilizando las siguientes librerías externas, como:
-
+Se realizo utilizando las siguientes librerías externas:
 #### `"fetch-mock", "fetch-mock-jest", "glob", "marked", "node-fetch" ` 
 
 ## Diagrama de Flujo 📌
