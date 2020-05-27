@@ -51,7 +51,7 @@ const mdFilter = (fileArr) => {
 // console.log(mdFilter(['test/out.md', 'test/test-API/other.md', 'test/test-API/prueba.js']));
 
 const readMD = (file) => fs.readFileSync(file, 'utf-8');
-// console.log(readMD('test/out.md'));
+// console.log(readMD('test/out.md')); devuelve files --> codif es para que retorne string
 
 // Funcion usa la lib marked para transformar el file en html, y con el renderizador
 // personalizado (New Renderer) busca las propiedades especificas (href, text,file)
