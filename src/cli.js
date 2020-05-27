@@ -41,5 +41,5 @@ if (argv.length) {
   }
 }
 
-// mdLinks('./test/test-API/test.md', { validate: true }).then((res) => console.log(res));
+// mdLinks('./test', { validate: true }).then((res) => console.log(res));
 // getBrokenLinksStats('./test/test-API/test.md').then((res) => console.log(res));

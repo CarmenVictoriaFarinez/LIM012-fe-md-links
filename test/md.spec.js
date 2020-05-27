@@ -1,5 +1,5 @@
 const {
-  absolutePath, getFilesMd, getLinksInFileMd,
+  absolutePath, walkDir, getLinksInFileMd,
 } = require('../src/md.js');
 
 describe('absolutePath', () => {
@@ -16,19 +16,21 @@ describe('absolutePath', () => {
   });
 });
 
-// Test prueba una funcion realizada con una lib para extraer rutas dentro de dir y subdir//
-
-describe('Asincrono - Promise(resolve, reject)', () => {
-  test('Promise(resolve, reject)', () => {
-    expect(typeof getFilesMd).toEqual('function');
+// Test prueba una funcion usada para extraer rutas dentro de dir y subdir//
+describe('walkDir ', () => {
+  it('is a function', () => {
+    expect(typeof walkDir).toBe('function');
   });
-  test('Promise- .resolves', () => {
-    const positiveR = ['test/out.md', 'test/test-API/other.md', 'test/test-API/test.md'];
-    return expect(Promise.resolve(positiveR)).resolves.toEqual(positiveR);
-  });
-  test('Promise- .reject', () => {
-    const negativeR = ['Error'];
-    return expect(Promise.reject(negativeR)).rejects.toEqual(negativeR);
+  it('Deberia retornar un array de strings', () => {
+    const filesOutput = [
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/md.spec.js',
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/options.spec.js',
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/out.md',
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/other.md',
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/prueba.js',
+      '/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md',
+    ];
+    expect(walkDir('/home/ubuntu/Documentos/Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test')).toEqual(filesOutput);
   });
 });
 

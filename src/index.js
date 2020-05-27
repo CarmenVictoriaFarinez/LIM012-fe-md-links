@@ -13,6 +13,6 @@ const mdLinks = (path, options) => new Promise((resolve) => {
   }
 });
 
-// mdLinks('./test/out.md').then((res) => console.log(res));
+// mdLinks('test', { validate: true }).then((res) => console.log(res));
 
 module.exports = mdLinks;

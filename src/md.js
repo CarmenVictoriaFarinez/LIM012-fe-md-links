@@ -1,54 +1,81 @@
 const path = require('path');
 const fs = require('fs');
-const glob = require('glob');
 const marked = require('marked');
 
 // valida existencia de la ruta, retorna true o false
 const routeTrue = (route) => fs.existsSync(route);
 
 // Funcion determina ruta absoluta o relativa --> input: path, string /output: path, string
-const absolutePath = (route) => {
-  if (path.isAbsolute(route) === true) {
-    return route;
-  } return (path.resolve(route));
+
+const absolutePath = (route) => (path.isAbsolute(route) === true ? route : (path.resolve(route)));
+
+// console.log(absolutePath('test.md'));
+
+// validar si la ruta ingresada es un directorio, retorna boleano. lstatSync : si algo existe
+const isDirec = (route) => fs.lstatSync(route).isDirectory();
+// console.log(isDirec('test/test-API/other.md'));
+
+// recorrer el directorio y subdir y extrae todos los files, output: array de strings
+const walkDir = (route) => {
+  let arrayFile = [];
+  if (!isDirec(route)) {
+    arrayFile.push(route);
+  } else {
+    // leer el contenido de un directorio retorna un array
+    const readDirectory = fs.readdirSync(route);
+    readDirectory.map((read) => {
+      // recorrer y leer todos los elementos del dir
+      // path.join une los segmentos de ruta especificados
+      const next = path.join(route, read);
+      // se produce la recursividad
+      // eslint-disable-next-line no-return-assign
+      return (isDirec(next)) ? arrayFile = arrayFile.concat(walkDir(next)) : arrayFile.push(next);
+    });
+  }
+  return arrayFile;
 };
-// absolutePath('./test-API/test.md');
+// console.log(walkDir('/home/ubuntu/Documentos
+// /Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test'));
 
-
-// Funcion usa la lib glob para extraer todas las rutas de los files .md dentro de dir y subdir
-// input: path, string  / output: array de strings
-
-const getFilesMd = (src) => new Promise((resolve, reject) => {
-  glob(`${src}/**/*.md`, (err, files) => {
-    if (err) {
-      reject(err);
-    } resolve(files);
+// Funcion filtra los archivos .md -->> output: array de strings
+const mdFilter = (fileArr) => {
+  const newArrayFileMd = [];
+  // eslint-disable-next-line consistent-return
+  fileArr.forEach((item) => {
+    if (path.extname(item) === '.md') {
+      return newArrayFileMd.push(item);
+    }
   });
-});
-(getFilesMd('./test/test-API/out.md').then((files) => (files)));
+  return newArrayFileMd;
+};
+// console.log(mdFilter(['test/out.md', 'test/test-API/other.md', 'test/test-API/prueba.js']));
+
+const readMD = (file) => fs.readFileSync(file, 'utf-8');
+// console.log(readMD('test/out.md'));
 
 // Funcion usa la lib marked para transformar el file en html, y con el renderizador
 // personalizado (New Renderer) busca las propiedades especificas (href, text,file)
 // input: path del file, string  / output: array objetos.
 
-const getLinksInFileMd = (file) => {
-  const mdFiles = fs.readFileSync(file).toString();
+const getLinksInFileMd = (route) => {
+  const mdFiles = walkDir(route);
+  const arrayMd = mdFilter(mdFiles);
   const myRen = new marked.Renderer();
   const links = [];
-
-  myRen.link = (href, title, text) => {
-    links.push({
-      href,
-      text,
-      file,
-    });
-  };
-  marked(mdFiles, { renderer: myRen });
+  arrayMd.forEach((file) => {
+    myRen.link = (href, title, text) => {
+      links.push({
+        href,
+        text,
+        file,
+      });
+    };
+    marked(readMD(file), { renderer: myRen });
+  });
   return (links);
 };
-// console.log(getLinksInFileMd('/home/ubuntu/Documentos/
-// Laboratoria/ProyectosBootcamp/LIM012-fe-md-links/test/test-API/test.md'));
+// console.log(getLinksInFileMd('test'));
 
 module.exports = {
-  routeTrue, absolutePath, getFilesMd, getLinksInFileMd,
+  routeTrue, absolutePath, walkDir, mdFilter, getLinksInFileMd,
 };
